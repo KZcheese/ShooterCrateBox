@@ -1,0 +1,1 @@
+[System.Serializable] public enum SensorShape {Circle, Rectangle}

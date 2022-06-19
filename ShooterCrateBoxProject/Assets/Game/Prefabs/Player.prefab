@@ -84,6 +84,112 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1898209734184124190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820621472742150052}
+  - component: {fileID: 9047966302961747593}
+  m_Layer: 0
+  m_Name: WallSensorRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1820621472742150052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898209734184124190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2015153983868497171}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9047966302961747593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898209734184124190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9587a8baf6b1f45a59cb1500a4e08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SensorShape: 1
+  SenseTag: 0
+  active: 0
+  layerToSense:
+    serializedVersion: 2
+    m_Bits: 1
+  radius: 0.24
+  rectangleSize: {x: 0.05, y: 0.9}
+  tagToSense: 
+--- !u!1 &2529580363227584827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813706189725332863}
+  - component: {fileID: 1409014338760864344}
+  m_Layer: 0
+  m_Name: WallSensorLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &813706189725332863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529580363227584827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.25, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2015153983868497171}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1409014338760864344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529580363227584827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9587a8baf6b1f45a59cb1500a4e08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SensorShape: 1
+  SenseTag: 0
+  active: 0
+  layerToSense:
+    serializedVersion: 2
+    m_Bits: 1
+  radius: 0.24
+  rectangleSize: {x: 0.05, y: 0.9}
+  tagToSense: 
 --- !u!1 &2674786124721267973
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +234,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c27cee6cd958e47b1577b42d5aabdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 56.25
+  currentVelocityX: 0
+  deceleration: 112.5
+  maxVelocityX: 5.625
   rb2D: {fileID: 1215762869519165064}
+  useAcceleration: 1
+  useDeceleration: 1
+  wallSensorLeft: {fileID: 1409014338760864344}
+  wallSensorRight: {fileID: 9047966302961747593}
 --- !u!1 &3886328265422904727
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5330366557994720466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,8 +387,8 @@ MonoBehaviour:
   active: 0
   layerToSense:
     serializedVersion: 2
-    m_Bits: 0
-  radius: 0
+    m_Bits: 1
+  radius: 0.24
   rectangleSize: {x: 0, y: 0}
   tagToSense: 
 --- !u!1 &5333498625780924230
@@ -307,6 +421,8 @@ Transform:
   m_Children:
   - {fileID: 4192250688171665129}
   - {fileID: 3121377879012565239}
+  - {fileID: 813706189725332863}
+  - {fileID: 1820621472742150052}
   m_Father: {fileID: 2460279064761382847}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -446,7 +562,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a29abb4d488a6a459a6facfe76749eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cancelRate: 200
+  gravityScale: 5.5
+  groundSensor: {fileID: 1585363905880020236}
+  headSensor: {fileID: 5042706002487015526}
+  jumpCount: 0
+  jumpForce: 0
+  jumpWindowTime: 0.5
+  maxJumpHeight: 4
+  multiJump: 0
   rb2D: {fileID: 1215762869519165064}
+  totalJumps: 1
+  variableJump: 1
 --- !u!1 &8476635956399915918
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8476635956399915918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -496,8 +623,8 @@ MonoBehaviour:
   active: 0
   layerToSense:
     serializedVersion: 2
-    m_Bits: 0
-  radius: 0
+    m_Bits: 1
+  radius: 0.24
   rectangleSize: {x: 0, y: 0}
   tagToSense: 
 --- !u!1 &8576693537728502467

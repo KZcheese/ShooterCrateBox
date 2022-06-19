@@ -19,11 +19,20 @@ public class PlayerController : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        
+        // True on first frame jump input is pressed.
+        if (context.started)
+        {
+            player.Jumper2D.Jump();
+        }
+        // True on the first frame the jump input is released.
+        else if (context.canceled)
+        {
+            player.Jumper2D.StopVariableJump();
+        }
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-
+        player.Mover2D.MoveInput = context.ReadValue<float>();
     }
 }

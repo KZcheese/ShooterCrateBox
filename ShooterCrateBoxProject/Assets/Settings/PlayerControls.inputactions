@@ -59,7 +59,7 @@
                 {
                     "name": "negative",
                     "id": "68b71f90-b0fc-4ab5-b6ef-3663700dc2bd",
-                    "path": "",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -70,7 +70,7 @@
                 {
                     "name": "positive",
                     "id": "9c9765da-0f14-4311-bc55-9ceecfc7c6cb",
-                    "path": "",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -92,7 +92,7 @@
                 {
                     "name": "negative",
                     "id": "a654c97c-9382-4672-bbc8-28cc8fbb0aa4",
-                    "path": "",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -103,7 +103,7 @@
                 {
                     "name": "positive",
                     "id": "0ff12896-efbe-4dd5-a484-d740a467ebc7",
-                    "path": "",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -114,7 +114,18 @@
                 {
                     "name": "",
                     "id": "66f0490d-15bb-4c45-9e89-59eef479aba2",
-                    "path": "",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49cd3134-6eab-4a32-853d-d34f3585de79",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

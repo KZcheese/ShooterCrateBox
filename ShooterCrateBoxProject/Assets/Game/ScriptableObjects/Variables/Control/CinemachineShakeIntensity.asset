@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02a29953f4cd88e41b11e715eefc69b4, type: 3}
-  m_Name: PlayerHealth
+  m_Script: {fileID: 11500000, guid: a141f8a994e8dcf448a295daba1252f0, type: 3}
+  m_Name: CinemachineShakeIntensity
   m_EditorClassIdentifier: 
   Value: 0

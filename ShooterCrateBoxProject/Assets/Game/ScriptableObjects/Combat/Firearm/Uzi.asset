@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f819a0b27614b42a95fdbbb5ee0c5c, type: 3}
+  m_Name: Uzi
+  m_EditorClassIdentifier: 
+  AccuracyConeAngle: 15
+  CameraShakeIntensity: 1
+  CameraShakeTime: 0.1
+  Color: {r: 0.6185174, g: 1, b: 0, a: 1}
+  Damage: 1
+  FireAudio: {fileID: 8300000, guid: 40564a03b8f0feb44a82192a85a1889d, type: 3}
+  FireMode: 0
+  Knockback: {x: 0, y: 0}
+  MinTimeBetweenShots: 0.05
+  Offset: {x: 0.4, y: 0}
+  ProjectileLifetime: 1
+  ProjectileOffset: {x: 0.85, y: 0.175}
+  ProjectilesPerShot: 1
+  ProjectileType: {fileID: 11400000, guid: 2c70e2a8491a7d241a67bf94160006cf, type: 2}
+  ProjectileVelocity: 15
+  ProjectileVelocityMax: 15
+  ProjectileVelocityMin: 5
+  RandomProjectileVelocity: 0
+  Recoil: 0.25
+  Scale: {x: 0.65, y: 0.65}
+  Sprite: {fileID: 21300000, guid: 793536621b0026f48924a60febe07dcd, type: 3}
+  UseCameraShake: 1
+  UseProjectileLifetime: 0

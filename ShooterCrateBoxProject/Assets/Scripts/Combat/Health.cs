@@ -9,18 +9,43 @@ using UnityEngine.Events;
 /// </summary>
 public class Health : MonoBehaviour
 {
+    /// <summary>
+    /// Number of hits this health component can take before being defeated.
+    /// </summary>
+    public int HealthPoints = 3;
+
+    /// <summary>
+    /// Response to losing health. Configured in the inspector.
+    /// </summary>
     public UnityEvent OnHealthLost;
+
+    /// <summary>
+    /// Response to losing final health point. Configured in the inspector.
+    /// </summary>
     public UnityEvent OnHealthEmpty;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    /// <summary>
+    /// Reduces health by amount of damage dealt and invokes appropriate events.
+    /// </summary>
+    /// <param name="damage">Amount by which to reduce health.</param>
+    public void LoseHealth(int damage)
     {
-        
+        HealthPoints -= damage;
+
+        if (HealthPoints == 0)
+        {
+            OnHealthEmpty.Invoke();
+            return;
+        }
+
+        OnHealthLost.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Resets the health component.
+    /// </summary>
+    public void ResetHealth()
     {
-        
+        HealthPoints = 3;
     }
 }

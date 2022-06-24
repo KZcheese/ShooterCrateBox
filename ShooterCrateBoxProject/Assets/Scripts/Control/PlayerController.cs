@@ -14,7 +14,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnFireInput(InputAction.CallbackContext context)
     {
-
+        if (context.started)
+        {
+            player.WeaponHandler.OnFireStart();
+        }
+        else if (context.canceled)
+        {
+            player.WeaponHandler.OnFireEnd();
+        }
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
@@ -33,6 +40,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
+        int newDir = Mathf.RoundToInt(context.ReadValue<float>());
+        if (newDir != 0)
+        {
+            player.transform.localScale = 
+                new Vector3(newDir, player.transform.localScale.y, 
+                player.transform.localScale.z);
+            player.WeaponHandler.Direction = newDir;
+        }
         player.Mover2D.MoveInput = context.ReadValue<float>();
     }
 }

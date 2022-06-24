@@ -136,7 +136,18 @@
                 {
                     "name": "",
                     "id": "66f0490d-15bb-4c45-9e89-59eef479aba2",
-                    "path": "",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49cd3134-6eab-4a32-853d-d34f3585de79",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

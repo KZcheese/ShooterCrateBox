@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -84,55 +82,13 @@ public class FirearmEditor : Editor
             EditorGUILayout.ObjectField("Script",
             MonoScript.FromScriptableObject((ScriptableObject)target),
             GetType(), false);
-
-        //DrawSpritePreview();
+            
         DrawAppearance();
         DrawCombatData();
         DrawFireStrategy();
         DrawFireEffects();
 
         serializedObject.ApplyModifiedProperties();
-    }
-
-    private void DrawSpritePreview()
-    {
-        Texture2D texture = AssetPreview.GetAssetPreview(spriteProperty.objectReferenceValue);
-        Texture2D displayTexture = null;
-
-        if (texture != null)
-        {
-            displayTexture = new Texture2D(texture.width, texture.height);
-
-            Color32[] baseColorPixels = texture.GetPixels32();
-            Color32[] displayPixels = displayTexture.GetPixels32();
-            Color tintColor = colorProperty.colorValue;
-
-            for (int i = 0; i < baseColorPixels.Length; i++)
-            {
-                if (baseColorPixels[i].a < 1)
-                {
-                    displayPixels[i] = Color.clear;
-                }
-                else
-                {
-                    Color.RGBToHSV(baseColorPixels[i], out float baseH, out float baseS, out float baseV);
-                    Color.RGBToHSV(tintColor, out float targetH, out float targetS, out float targetV);
-
-                    Color finalColor = Color.HSVToRGB(targetH, targetS, baseV);
-                    displayPixels[i] = finalColor;
-                }
-            }
-
-            displayTexture.SetPixels32(displayPixels);
-            displayTexture.Apply();
-        }
-
-
-        GUILayout.BeginHorizontal("box");
-        GUILayout.FlexibleSpace();
-        if (displayTexture != null) GUILayout.Label(displayTexture, GUILayout.Width(128), GUILayout.Height(128));
-        GUILayout.FlexibleSpace();
-        GUILayout.EndHorizontal();
     }
     #endregion
 

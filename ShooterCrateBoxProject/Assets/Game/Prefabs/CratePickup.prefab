@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9158793818279407442}
   - component: {fileID: 3594259743682911603}
   - component: {fileID: 8575356579069666274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CratePickup
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -30,6 +30,11 @@ public class Mover2DEditor : Editor
     private SerializedProperty maxVelocityXProperty;
 
     /// <summary>
+    /// Represents the Mover2D's naturalDecelerationX property;
+    /// </summary>
+    private SerializedProperty naturalDecelerationXProperty;
+
+    /// <summary>
     /// Represents the Mover2D's rb2D property.
     /// </summary>
     private SerializedProperty rb2DProperty;
@@ -79,6 +84,9 @@ public class Mover2DEditor : Editor
 
         decelerationProperty = serializedObject.FindProperty("deceleration");
         maxVelocityXProperty = serializedObject.FindProperty("maxVelocityX");
+
+        naturalDecelerationXProperty = 
+            serializedObject.FindProperty("naturalDecelerationX");
 
         rb2DProperty = serializedObject.FindProperty("rb2D");
         useAccelerationProperty = 
@@ -147,6 +155,10 @@ public class Mover2DEditor : Editor
     {
         EditorGUILayout.LabelField("Acceleration/Deceleration Parameters",
                     EditorStyles.boldLabel);
+
+        EditorGUILayout.PropertyField(naturalDecelerationXProperty,
+            new GUIContent("Natural Deceleration X",
+            "The rate of deceleration when the mover is disabled (i.e. after weapon recoil)."));
 
         EditorGUILayout.PropertyField(useAccelerationProperty,
             new GUIContent("Use Acceleration", 

@@ -7,11 +7,6 @@ using UnityEngine;
 public class WeaponHandler : MonoBehaviour
 {
     /// <summary>
-    /// GameEvent that signals the camera to shake.
-    /// </summary>
-    [SerializeField] private GameEvent cameraShakeEvent;
-
-    /// <summary>
     /// Float variable representing the intensity of any camera shake caused by 
     /// weapon fire.
     /// </summary>
@@ -27,11 +22,6 @@ public class WeaponHandler : MonoBehaviour
     /// Firearm the weaponHandler has equipped.
     /// </summary>
     [SerializeField] private Firearm currentFirearm;
-
-    /// <summary>
-    /// GameEvent that signals fire audio to play.
-    /// </summary>
-    [SerializeField] private GameEvent playWeaponAudioEvent;
 
     /// <summary>
     /// Transform whose children contain projectile object pools.
@@ -50,9 +40,19 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2D;
 
     /// <summary>
+    /// GameEvent that is raised whenever a weapon with recoil fires
+    /// </summary>
+    [SerializeField] private GameEvent recoilEvent;
+
+    /// <summary>
     /// AudioClipVariable containing active weapon's fire audio clip.
     /// </summary>
     [SerializeField] private AudioClipVariable weaponFireClip;
+
+    /// <summary>
+    /// GameEvent that is raised whenever a weapon fires.
+    /// </summary>
+    [SerializeField] private GameEvent weaponFireEvent;
 
     /// <summary>
     /// Graphics renderer for the weapon.
@@ -238,24 +238,32 @@ public class WeaponHandler : MonoBehaviour
             }
         }
 
-        // Play Audio
+        // Assign weapon fire audio clip
         weaponFireClip.Value = CurrentFirearm.FireAudio;
-        playWeaponAudioEvent.Raise();
 
         // Apply Camera Shake
         if (CurrentFirearm.UseCameraShake)
         {
             cameraShakeIntensity.Value = CurrentFirearm.CameraShakeIntensity;
             cameraShakeTime.Value = CurrentFirearm.CameraShakeTime;
-            cameraShakeEvent.Raise();
+        }
+        else
+        {
+            cameraShakeIntensity.Value = 0.0f;
+            cameraShakeTime.Value = 0.0f;
         }
 
-        // Apply Kickback
-        rb2D.AddForce(new Vector2(-Direction *
-            CurrentFirearm.Recoil, 0.0f), ForceMode2D.Impulse);
+        // Apply recoil
+        if (CurrentFirearm.Recoil != 0.0f)
+        {
+            rb2D.velocity += new Vector2(-Direction * CurrentFirearm.Recoil, 0.0f);
+            recoilEvent.Raise();
+        }
 
         // Set cooldown timer.
         cooldownTimer = CurrentFirearm.MinTimeBetweenShots;
+
+        weaponFireEvent.Raise();
     }
 
     /// <summary>

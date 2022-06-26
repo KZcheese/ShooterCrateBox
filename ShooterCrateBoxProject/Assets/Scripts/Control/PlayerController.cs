@@ -43,9 +43,9 @@ public class PlayerController : MonoBehaviour
         int newDir = Mathf.RoundToInt(context.ReadValue<float>());
         if (newDir != 0)
         {
-            player.transform.localScale = 
-                new Vector3(newDir, player.transform.localScale.y, 
-                player.transform.localScale.z);
+            player.WeaponHandler.transform.localScale = 
+                new Vector3(newDir, player.WeaponHandler.transform.localScale.y,
+                player.WeaponHandler.transform.localScale.z);
             player.WeaponHandler.Direction = newDir;
         }
         player.Mover2D.MoveInput = context.ReadValue<float>();

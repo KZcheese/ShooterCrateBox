@@ -19,10 +19,10 @@ public class WeaponHandlerEditor : Editor
     private SerializedProperty weaponRendererProperty;
 
     // ScriptableObject Reference Properties
-    private SerializedProperty cameraShakeEventProperty;
     private SerializedProperty cameraShakeIntensityProperty;
     private SerializedProperty cameraShakeTimeProperty;
-    private SerializedProperty playWeaponAudioEventProperty;
+    private SerializedProperty recoilEventProperty;
+    private SerializedProperty weaponFireEventProperty;
     private SerializedProperty weaponFireClipProperty;
 
     // Editor control parameters
@@ -41,10 +41,10 @@ public class WeaponHandlerEditor : Editor
         weaponRendererProperty = serializedObject.FindProperty("weaponRenderer");
 
         // Find ScriptableObject Reference Properties
-        cameraShakeEventProperty = serializedObject.FindProperty("cameraShakeEvent");
+        weaponFireEventProperty = serializedObject.FindProperty("weaponFireEvent");
+        recoilEventProperty = serializedObject.FindProperty("recoilEvent");
         cameraShakeIntensityProperty = serializedObject.FindProperty("cameraShakeIntensity");
         cameraShakeTimeProperty = serializedObject.FindProperty("cameraShakeTime");
-        playWeaponAudioEventProperty = serializedObject.FindProperty("playWeaponAudioEvent");
         weaponFireClipProperty = serializedObject.FindProperty("weaponFireClip");
     }
 
@@ -135,10 +135,10 @@ public class WeaponHandlerEditor : Editor
     {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("ScriptableObject References", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(cameraShakeEventProperty);
+        EditorGUILayout.PropertyField(weaponFireEventProperty);
+        EditorGUILayout.PropertyField(recoilEventProperty);
         EditorGUILayout.PropertyField(cameraShakeIntensityProperty);
         EditorGUILayout.PropertyField(cameraShakeTimeProperty);
-        EditorGUILayout.PropertyField(playWeaponAudioEventProperty);
         EditorGUILayout.PropertyField(weaponFireClipProperty);
     }
 }

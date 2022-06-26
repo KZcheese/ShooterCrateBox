@@ -30,7 +30,7 @@ MonoBehaviour:
   ProjectileVelocityMax: 15
   ProjectileVelocityMin: 5
   RandomProjectileVelocity: 1
-  Recoil: 3
+  Recoil: 15
   Scale: {x: 1, y: 1}
   Sprite: {fileID: 21300000, guid: 2a873996af2bce64db1e363960d8c0be, type: 3}
   UseCameraShake: 1

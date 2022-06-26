@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bb766174885c724aa3dd5cd3422c333, type: 3}
-  m_Name: PlayWeaponAudioEvent
+  m_Name: RecoilEvent
   m_EditorClassIdentifier: 
   listeners: []

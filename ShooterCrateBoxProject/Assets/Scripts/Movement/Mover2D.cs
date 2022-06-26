@@ -28,6 +28,12 @@ public class Mover2D : MonoBehaviour
     [SerializeField] private float maxVelocityX = 5.0f;
 
     /// <summary>
+    /// Deceleration used in X direction when the mover is disabled. Can be 
+    /// thought of as friction or air resistance, ignoring units.
+    /// </summary>
+    [SerializeField] private float naturalDecelerationX = 50.0f;
+
+    /// <summary>
     /// Rigidbody2D component to be affected by this Mover2D.
     /// </summary>
     [SerializeField] private Rigidbody2D rb2D;
@@ -59,6 +65,16 @@ public class Mover2D : MonoBehaviour
     /// </summary>
     private float moveInput;
 
+    public float DisabledTimer { get; set; } = 0.0f;
+
+    private bool isDisabled
+    {
+        get
+        {
+            return DisabledTimer > 0.0f;
+        }
+    }
+
     /// <summary>
     /// Movement direction based on controller input.
     /// </summary>
@@ -71,17 +87,47 @@ public class Mover2D : MonoBehaviour
         set
         {
             moveInput = value;
-            currentVelocityX = rb2D.velocity.x;
         }
     }
 
     #region Monobehaviour Methods
     private void FixedUpdate()
     {
-        CalculateNewXVelocity();
-        rb2D.velocity = new Vector2(currentVelocityX, rb2D.velocity.y);
+        if (!isDisabled)
+        {
+            CalculateNewXVelocity();
+        }
+        else
+        {
+            ApplyNaturalDeceleration();
+        }
+        currentVelocityX = rb2D.velocity.x;
+    }
+    private void Update()
+    {
+        DisabledTimer -= Time.deltaTime;
     }
     #endregion
+
+    private void ApplyNaturalDeceleration()
+    {
+        if (rb2D.velocity.x > naturalDecelerationX * Time.fixedDeltaTime)
+        {
+            rb2D.velocity =
+                new Vector2(rb2D.velocity.x -
+                (naturalDecelerationX * Time.fixedDeltaTime), rb2D.velocity.y);
+        }
+        else if (rb2D.velocity.x < -naturalDecelerationX * Time.fixedDeltaTime)
+        {
+            rb2D.velocity =
+                new Vector2(rb2D.velocity.x +
+                (naturalDecelerationX * Time.fixedDeltaTime), rb2D.velocity.y);
+        }
+        else
+        {
+            rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);
+        }
+    }
 
     /// <summary>
     /// Calculates current velocity based on MoveInput and whether the Mover2D 
@@ -96,59 +142,71 @@ public class Mover2D : MonoBehaviour
             if ((MoveInput == -1 && wallSensorLeft.Active) ||
                 (MoveInput == 1 && wallSensorRight.Active))
             {
-                currentVelocityX = 0;
+                rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);
                 return;
             }
 
             if (useDeceleration)
             {
-                if (MoveInput == 1 && currentVelocityX < 0.0f)
+                if (MoveInput == 1 && rb2D.velocity.x < 0.0f)
                 {
-                    currentVelocityX += deceleration * Time.fixedDeltaTime;
+                    rb2D.velocity =
+                        new Vector2(rb2D.velocity.x +
+                        (deceleration * Time.fixedDeltaTime), rb2D.velocity.y);
                 }
-                else if (MoveInput == -1 && currentVelocityX > 0.0f)
+                else if (MoveInput == -1 && rb2D.velocity.x > 0.0f)
                 {
-                    currentVelocityX -= deceleration * Time.fixedDeltaTime;
+                    rb2D.velocity =
+                        new Vector2(rb2D.velocity.x -
+                        (deceleration * Time.fixedDeltaTime), rb2D.velocity.y);
                 }
             }
 
             if (useAcceleration)
             {
-                if (MoveInput == 1 && currentVelocityX >= 0.0f && currentVelocityX < maxVelocityX)
+                if (MoveInput == 1 && rb2D.velocity.x >= 0.0f && rb2D.velocity.x < maxVelocityX)
                 {
-                    currentVelocityX += acceleration * Time.fixedDeltaTime;
+                    rb2D.velocity =
+                        new Vector2(rb2D.velocity.x +
+                        (acceleration * Time.fixedDeltaTime), rb2D.velocity.y);
                 }
-                else if (MoveInput == -1 && currentVelocityX <= 0.0f && currentVelocityX > -maxVelocityX)
+                else if (MoveInput == -1 && rb2D.velocity.x <= 0.0f && rb2D.velocity.x > -maxVelocityX)
                 {
-                    currentVelocityX -= acceleration * Time.fixedDeltaTime;
+                    rb2D.velocity =
+                        new Vector2(rb2D.velocity.x -
+                        (acceleration * Time.fixedDeltaTime), rb2D.velocity.y);
                 }
             }
             else
             {
-                currentVelocityX = maxVelocityX * MoveInput;
+                rb2D.velocity = new Vector2(maxVelocityX * MoveInput,
+                    rb2D.velocity.y);
             }
-
         }
         else
         {
             if (useDeceleration)
             {
-                if (currentVelocityX > deceleration * Time.fixedDeltaTime)
+                if (rb2D.velocity.x > deceleration * Time.fixedDeltaTime)
                 {
-                    currentVelocityX -= deceleration * Time.fixedDeltaTime;
+                    rb2D.velocity =
+                        new Vector2(rb2D.velocity.x -
+                        (deceleration * Time.fixedDeltaTime), rb2D.velocity.y);
                 }
-                else if (currentVelocityX < -deceleration * Time.fixedDeltaTime)
+                else if (rb2D.velocity.x < -deceleration * Time.fixedDeltaTime)
                 {
-                    currentVelocityX += deceleration * Time.fixedDeltaTime;
+                    rb2D.velocity =
+                        new Vector2(rb2D.velocity.x +
+                        (deceleration * Time.fixedDeltaTime), rb2D.velocity.y);
                 }
                 else
                 {
-                    currentVelocityX = 0;
+                    rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);
                 }
             }
             else
             {
-                currentVelocityX = 0;
+                rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);
             }
         }
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -8,20 +6,26 @@ using UnityEngine;
 /// </summary>
 public class CratePickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    /// <summary>
+    /// The firearm this crate contains.
+    /// </summary>
+    public Firearm Content { get; set; }
 
-    }
+    /// <summary>
+    /// Event to be raised when a crate is picked up.
+    /// </summary>
+    [SerializeField] private GameEvent cratePickedUpEvent;
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    #region MonoBehaviour Methods
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            Player player = other.GetComponent<Player>();
+            player.WeaponHandler.CurrentFirearm = Content;
+            gameObject.SetActive(false);
+            cratePickedUpEvent.Raise();
+        }
     }
+    #endregion
 }

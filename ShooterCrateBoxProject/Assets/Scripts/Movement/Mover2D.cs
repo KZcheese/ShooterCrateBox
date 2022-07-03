@@ -13,11 +13,6 @@ public class Mover2D : MonoBehaviour
     [SerializeField] private float acceleration = 10.0f;
 
     /// <summary>
-    /// Current velocity of the Mover2D.
-    /// </summary>
-    [SerializeField] private float currentVelocityX = 0;
-
-    /// <summary>
     /// Rate at which x velocity moves toward 0.0.
     /// </summary>
     [SerializeField] private float deceleration = 10.0f;
@@ -65,15 +60,12 @@ public class Mover2D : MonoBehaviour
     /// </summary>
     private float moveInput;
 
-    public float DisabledTimer { get; set; } = 0.0f;
+    /// <summary>
+    /// Current velocity of the Mover2D.
+    /// </summary>
+    public float CurrentVelocityX;
 
-    private bool isDisabled
-    {
-        get
-        {
-            return DisabledTimer > 0.0f;
-        }
-    }
+    public float DisabledTimer { get; set; } = 0.0f;
 
     /// <summary>
     /// Movement direction based on controller input.
@@ -90,6 +82,17 @@ public class Mover2D : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Determines whether this Mover2D is currently disabled.
+    /// </summary>
+    private bool isDisabled
+    {
+        get
+        {
+            return DisabledTimer > 0.0f;
+        }
+    }
+
     #region Monobehaviour Methods
     private void FixedUpdate()
     {
@@ -101,11 +104,14 @@ public class Mover2D : MonoBehaviour
         {
             ApplyNaturalDeceleration();
         }
-        currentVelocityX = rb2D.velocity.x;
+        CurrentVelocityX = rb2D.velocity.x;
     }
     private void Update()
     {
-        DisabledTimer -= Time.deltaTime;
+        if (isDisabled)
+        {
+            DisabledTimer -= Time.deltaTime;
+        }
     }
     #endregion
 

@@ -7,17 +7,24 @@ using UnityEngine;
 /// </summary>
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private RollerEnemyPool rollerEnemyPool;
+    [SerializeField] private Transform enemySpawnPoint;
 
-    // Start is called before the first frame update
-    void Start()
+    #region MonoBehaviour Methods
+    private void Start()
     {
-
+        SpawnRollerEnemy();
     }
+    #endregion
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnRollerEnemy()
     {
+        GameObject enemyObject = rollerEnemyPool.Pool.Get();
 
+        // This enemy may be reused, so reset it's health before spawning.
+        Health rollerEnemyHealth = enemyObject.GetComponent<Health>();
+        rollerEnemyHealth.ResetHealth();
+        
+        enemyObject.transform.position = enemySpawnPoint.position;
     }
 }

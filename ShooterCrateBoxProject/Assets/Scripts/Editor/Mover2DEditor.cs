@@ -80,7 +80,7 @@ public class Mover2DEditor : Editor
         accelerationProperty = serializedObject.FindProperty("acceleration");
 
         currentVelocityXProperty = 
-            serializedObject.FindProperty("currentVelocityX");
+            serializedObject.FindProperty("CurrentVelocityX");
 
         decelerationProperty = serializedObject.FindProperty("deceleration");
         maxVelocityXProperty = serializedObject.FindProperty("maxVelocityX");

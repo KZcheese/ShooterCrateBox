@@ -103,7 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 56.25
-  currentVelocityX: 0
   deceleration: 112.5
   maxVelocityX: 5.625
   naturalDecelerationX: 50
@@ -112,6 +111,7 @@ MonoBehaviour:
   useDeceleration: 1
   wallSensorLeft: {fileID: 5387894624365853351}
   wallSensorRight: {fileID: 5387894624503626632}
+  CurrentVelocityX: 0
 --- !u!114 &5387894623186904135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,9 +289,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1194496201
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 605227195
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -588,8 +588,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 605227195
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 0, b: 0.33655262, a: 1}
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8560c561fd097c94690c5c1eff5d7b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPoints: 3
+  MaxHealthPoints: 1
   OnHealthLost:
     m_PersistentCalls:
       m_Calls: []

@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     /// <summary>
     /// Number of hits this health component can take before being defeated.
     /// </summary>
-    public int HealthPoints = 3;
+    public int MaxHealthPoints = 3;
 
     /// <summary>
     /// Response to losing health. Configured in the inspector.
@@ -24,15 +24,24 @@ public class Health : MonoBehaviour
     /// </summary>
     public UnityEvent OnHealthEmpty;
 
+    private float currentHealthPoints;
+
+    #region MonoBehaviour Methods
+    private void Start()
+    {
+        ResetHealth();
+    }
+    #endregion
+
     /// <summary>
     /// Reduces health by amount of damage dealt and invokes appropriate events.
     /// </summary>
     /// <param name="damage">Amount by which to reduce health.</param>
     public void LoseHealth(int damage)
     {
-        HealthPoints -= damage;
+        currentHealthPoints -= damage;
 
-        if (HealthPoints == 0)
+        if (currentHealthPoints == 0)
         {
             OnHealthEmpty.Invoke();
             return;
@@ -46,6 +55,6 @@ public class Health : MonoBehaviour
     /// </summary>
     public void ResetHealth()
     {
-        HealthPoints = 3;
+        currentHealthPoints = MaxHealthPoints;
     }
 }

@@ -16,7 +16,7 @@ TagManager:
   - Enemy
   - Pickup
   - Projectile
-  - 
+  - Hazard
   - 
   - 
   - 
@@ -42,6 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Weapon
-    uniqueID: 3100471095
+  - name: Enemy
+    uniqueID: 2848394243
+    locked: 0
+  - name: Pickup
+    uniqueID: 1716159119
+    locked: 0
+  - name: Player
+    uniqueID: 605227195
     locked: 0

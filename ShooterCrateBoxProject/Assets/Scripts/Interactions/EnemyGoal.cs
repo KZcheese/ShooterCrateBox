@@ -8,20 +8,16 @@ using UnityEngine;
 /// </summary>
 public class EnemyGoal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] private Transform spawnPoint;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    #region MonoBehaviour Methods
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        if (other.CompareTag("Enemy"))
+        {
+            RollerEnemy rollerEnemy = other.GetComponent<RollerEnemy>();
+            rollerEnemy.OnReachedGoal(spawnPoint);
+        }
     }
+    #endregion
 }

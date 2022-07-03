@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cratePickedUpEvent: {fileID: 11400000, guid: 052fd1718653f3546955be94cf84d1ad, type: 2}
+  playerScore: {fileID: 11400000, guid: 9368a8e0ed2827443bc19ec025f87365, type: 2}
 --- !u!61 &3594259743682911603
 BoxCollider2D:
   m_ObjectHideFlags: 0

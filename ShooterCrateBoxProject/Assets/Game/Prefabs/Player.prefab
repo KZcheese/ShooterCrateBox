@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShakeIntensity: {fileID: 11400000, guid: fa298b33b181e2e4bb1f54e5cc74d9ef, type: 2}
   cameraShakeTime: {fileID: 11400000, guid: d230fb5422cacc44294d024077275063, type: 2}
-  currentFirearm: {fileID: 11400000, guid: 0c96891f51a846542b4166e1862bde53, type: 2}
+  currentFirearm: {fileID: 11400000, guid: 3f030605d8361164ba60bb051b819730, type: 2}
   projectilePoolRoot: {fileID: 5387894623198239329}
   projectileStart: {fileID: 5387894624455984239}
   rb2D: {fileID: 5387894625062784608}

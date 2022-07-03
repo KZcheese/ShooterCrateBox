@@ -56,6 +56,7 @@ MonoBehaviour:
   recoilEvent: {fileID: 11400000, guid: c4bfedf6e98572842a9e5d9f32398137, type: 2}
   weaponFireClip: {fileID: 11400000, guid: 208036b3789520d42b8335d1ccd77cb7, type: 2}
   weaponFireEvent: {fileID: 11400000, guid: 1cd23af12cc61af499fbd40c0b6cf580, type: 2}
+  weaponString: {fileID: 11400000, guid: e45b150ffd084d4479eb396bcade0e32, type: 2}
   weaponRenderer: {fileID: 5387894623612691501}
 --- !u!1 &5387894623186904130
 GameObject:

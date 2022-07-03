@@ -24,6 +24,7 @@ public class WeaponHandlerEditor : Editor
     private SerializedProperty recoilEventProperty;
     private SerializedProperty weaponFireEventProperty;
     private SerializedProperty weaponFireClipProperty;
+    private SerializedProperty weaponStringProperty;
 
     // Editor control parameters
     private static bool showTesting = false;
@@ -46,6 +47,7 @@ public class WeaponHandlerEditor : Editor
         cameraShakeIntensityProperty = serializedObject.FindProperty("cameraShakeIntensity");
         cameraShakeTimeProperty = serializedObject.FindProperty("cameraShakeTime");
         weaponFireClipProperty = serializedObject.FindProperty("weaponFireClip");
+        weaponStringProperty = serializedObject.FindProperty("weaponString");
     }
 
     public override void OnInspectorGUI()
@@ -140,5 +142,6 @@ public class WeaponHandlerEditor : Editor
         EditorGUILayout.PropertyField(cameraShakeIntensityProperty);
         EditorGUILayout.PropertyField(cameraShakeTimeProperty);
         EditorGUILayout.PropertyField(weaponFireClipProperty);
+        EditorGUILayout.PropertyField(weaponStringProperty);
     }
 }

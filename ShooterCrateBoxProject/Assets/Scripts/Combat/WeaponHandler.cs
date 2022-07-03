@@ -54,6 +54,8 @@ public class WeaponHandler : MonoBehaviour
     /// </summary>
     [SerializeField] private GameEvent weaponFireEvent;
 
+    [SerializeField] private StringVariable weaponString;
+
     /// <summary>
     /// Graphics renderer for the weapon.
     /// </summary>
@@ -97,6 +99,7 @@ public class WeaponHandler : MonoBehaviour
 
             if (currentFirearm != null)
             {
+                weaponString.Value = currentFirearm.name;
                 LoadFirearmGraphics();
                 SelectProjectilePool();
             }

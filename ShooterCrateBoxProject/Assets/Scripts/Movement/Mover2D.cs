@@ -10,17 +10,17 @@ public class Mover2D : MonoBehaviour
     /// <summary>
     /// Rate at which x velocity moves toward maxVelocityX.
     /// </summary>
-    [SerializeField] private float acceleration = 10.0f;
+    public float Acceleration = 10.0f;
+    
+    /// <summary>
+    /// Maximum X velocity of this Mover2D.
+    /// </summary>
+    public float MaxVelocityX = 5.0f;
 
     /// <summary>
     /// Rate at which x velocity moves toward 0.0.
     /// </summary>
     [SerializeField] private float deceleration = 10.0f;
-
-    /// <summary>
-    /// Maximum X velocity of this Mover2D.
-    /// </summary>
-    [SerializeField] private float maxVelocityX = 5.0f;
 
     /// <summary>
     /// Deceleration used in X direction when the mover is disabled. Can be 
@@ -170,22 +170,22 @@ public class Mover2D : MonoBehaviour
 
             if (useAcceleration)
             {
-                if (MoveInput == 1 && rb2D.velocity.x >= 0.0f && rb2D.velocity.x < maxVelocityX)
+                if (MoveInput == 1 && rb2D.velocity.x >= 0.0f && rb2D.velocity.x < MaxVelocityX)
                 {
                     rb2D.velocity =
                         new Vector2(rb2D.velocity.x +
-                        (acceleration * Time.fixedDeltaTime), rb2D.velocity.y);
+                        (Acceleration * Time.fixedDeltaTime), rb2D.velocity.y);
                 }
-                else if (MoveInput == -1 && rb2D.velocity.x <= 0.0f && rb2D.velocity.x > -maxVelocityX)
+                else if (MoveInput == -1 && rb2D.velocity.x <= 0.0f && rb2D.velocity.x > -MaxVelocityX)
                 {
                     rb2D.velocity =
                         new Vector2(rb2D.velocity.x -
-                        (acceleration * Time.fixedDeltaTime), rb2D.velocity.y);
+                        (Acceleration * Time.fixedDeltaTime), rb2D.velocity.y);
                 }
             }
             else
             {
-                rb2D.velocity = new Vector2(maxVelocityX * MoveInput,
+                rb2D.velocity = new Vector2(MaxVelocityX * MoveInput,
                     rb2D.velocity.y);
             }
         }

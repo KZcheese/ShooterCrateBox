@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c27cee6cd958e47b1577b42d5aabdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 56.25
+  Acceleration: 56.25
+  MaxVelocityX: 5
   deceleration: 112.5
-  maxVelocityX: 5.625
   naturalDecelerationX: 50
   rb2D: {fileID: 5387894625062784608}
   useAcceleration: 1

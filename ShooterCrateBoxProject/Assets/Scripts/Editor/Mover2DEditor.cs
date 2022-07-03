@@ -77,28 +77,28 @@ public class Mover2DEditor : Editor
     #region Editor Methods
     private void OnEnable()
     {
-        accelerationProperty = serializedObject.FindProperty("acceleration");
+        accelerationProperty = serializedObject.FindProperty("Acceleration");
 
-        currentVelocityXProperty = 
+        currentVelocityXProperty =
             serializedObject.FindProperty("CurrentVelocityX");
 
         decelerationProperty = serializedObject.FindProperty("deceleration");
-        maxVelocityXProperty = serializedObject.FindProperty("maxVelocityX");
+        maxVelocityXProperty = serializedObject.FindProperty("MaxVelocityX");
 
-        naturalDecelerationXProperty = 
+        naturalDecelerationXProperty =
             serializedObject.FindProperty("naturalDecelerationX");
 
         rb2DProperty = serializedObject.FindProperty("rb2D");
-        useAccelerationProperty = 
+        useAccelerationProperty =
             serializedObject.FindProperty("useAcceleration");
 
-        useDecelerationProperty = 
+        useDecelerationProperty =
             serializedObject.FindProperty("useDeceleration");
 
-        wallSensorLeftProperty = 
+        wallSensorLeftProperty =
             serializedObject.FindProperty("wallSensorLeft");
 
-        wallSensorRightProperty = 
+        wallSensorRightProperty =
             serializedObject.FindProperty("wallSensorRight");
     }
 
@@ -161,24 +161,24 @@ public class Mover2DEditor : Editor
             "The rate of deceleration when the mover is disabled (i.e. after weapon recoil)."));
 
         EditorGUILayout.PropertyField(useAccelerationProperty,
-            new GUIContent("Use Acceleration", 
+            new GUIContent("Use Acceleration",
             "Should this Mover2D approach max velocity over time?"));
 
         if (useAccelerationProperty.boolValue)
         {
             EditorGUILayout.PropertyField(accelerationProperty,
-                new GUIContent("Acceleration", 
+                new GUIContent("Acceleration",
                 "At which rate should this Mover2D approach max velocity?"));
         }
 
         EditorGUILayout.PropertyField(useDecelerationProperty,
-            new GUIContent("Use Deceleration", 
+            new GUIContent("Use Deceleration",
             "Should this Mover2D approach a velocity of 0 over time?"));
 
         if (useDecelerationProperty.boolValue)
         {
             EditorGUILayout.PropertyField(decelerationProperty,
-                new GUIContent("Deceleration", 
+                new GUIContent("Deceleration",
                 "At which rate should this Mover2D approach a velocity of 0?"));
         }
     }
@@ -188,21 +188,21 @@ public class Mover2DEditor : Editor
     /// </summary>
     private void DrawComponentReferences()
     {
-        EditorGUILayout.LabelField("Component References", 
+        EditorGUILayout.LabelField("Component References",
             EditorStyles.boldLabel);
 
         EditorGUILayout.PropertyField(rb2DProperty,
-            new GUIContent("Rb 2D", 
+            new GUIContent("Rb 2D",
             "Which Rigidbody2D should this Mover2D affect?"));
 
         EditorGUILayout.PropertyField(wallSensorLeftProperty,
-            new GUIContent("Wall Sensor Left", 
+            new GUIContent("Wall Sensor Left",
             "Which Sensor2D should be responsible for sensing walls " +
             "to the left?"));
 
         EditorGUILayout.PropertyField(wallSensorRightProperty,
-            new GUIContent("Wall Sensor Right", 
-            "Which Sensor2D should be responsible for sensing walls " + 
+            new GUIContent("Wall Sensor Right",
+            "Which Sensor2D should be responsible for sensing walls " +
             "to the right?"));
     }
 
@@ -218,8 +218,8 @@ public class Mover2DEditor : Editor
         // Acceleration Data
         if (useAccelerationProperty.boolValue)
         {
-            float accelTime = 
-                maxVelocityXProperty.floatValue / 
+            float accelTime =
+                maxVelocityXProperty.floatValue /
                 accelerationProperty.floatValue;
             using (new EditorGUI.DisabledScope(true))
                 EditorGUILayout.FloatField("Acceleration Time", accelTime);
@@ -233,8 +233,8 @@ public class Mover2DEditor : Editor
         // Deceleration Data
         if (useDecelerationProperty.boolValue)
         {
-            float decelTime = 
-                maxVelocityXProperty.floatValue / 
+            float decelTime =
+                maxVelocityXProperty.floatValue /
                 decelerationProperty.floatValue;
             using (new EditorGUI.DisabledScope(true))
                 EditorGUILayout.FloatField("Deceleration Time", decelTime);
@@ -330,11 +330,11 @@ public class Mover2DEditor : Editor
     /// </summary>
     private void DrawVelocityParams()
     {
-        EditorGUILayout.LabelField("Velocity Parameters", 
+        EditorGUILayout.LabelField("Velocity Parameters",
             EditorStyles.boldLabel);
 
         EditorGUILayout.PropertyField(maxVelocityXProperty,
-            new GUIContent("Max Velocity X", 
+            new GUIContent("Max Velocity X",
             "What is the fastest velocity at which this Mover2D can travel?"));
     }
 }

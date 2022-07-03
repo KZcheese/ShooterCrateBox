@@ -265,9 +265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c27cee6cd958e47b1577b42d5aabdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 2.5
+  Acceleration: 10
+  MaxVelocityX: 5
   deceleration: 125
-  maxVelocityX: 5
   naturalDecelerationX: 50
   rb2D: {fileID: 5337709860142876022}
   useAcceleration: 1
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphicsTransform: {fileID: 5337709860126229758}
+  spriteRenderer: {fileID: 5337709860314703188}
   mover2D: {fileID: 5337709859931187798}
   rb2D: {fileID: 5337709860142876022}
   groundSensor: {fileID: 5337709858558931952}

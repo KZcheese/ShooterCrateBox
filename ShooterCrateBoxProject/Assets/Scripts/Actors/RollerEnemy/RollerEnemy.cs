@@ -5,6 +5,7 @@ public class RollerEnemy : MonoBehaviour
 {
     [Header("Component References")]
     [SerializeField] private Transform graphicsTransform;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Mover2D mover2D;
     [SerializeField] private Rigidbody2D rb2D;
 
@@ -14,7 +15,7 @@ public class RollerEnemy : MonoBehaviour
     [SerializeField] private Sensor2D wallSensorRight;
 
     private bool hasLanded = false;
-    private int goalsReached = 0;
+    private bool hasReachedGoal = false;
     private int direction;
 
     public IObjectPool<GameObject> OriginPool { get; set; }
@@ -25,6 +26,11 @@ public class RollerEnemy : MonoBehaviour
         groundSensor.sensorStateChanged += OnFirstGroundContact;
         wallSensorRight.sensorStateChanged += ChangeDirection;
         wallSensorLeft.sensorStateChanged += ChangeDirection;
+
+        hasReachedGoal = false;
+        spriteRenderer.color = Color.white;
+        mover2D.MaxVelocityX = 5.0f;
+        mover2D.Acceleration = 2.5f;
     }
     private void OnDisable()
     {
@@ -47,7 +53,14 @@ public class RollerEnemy : MonoBehaviour
         hasLanded = false;
         mover2D.MoveInput = 0;
         rb2D.velocity = Vector2.zero;
-        goalsReached += 1;
+
+        if (!hasReachedGoal)
+        {
+            hasReachedGoal = true;
+            spriteRenderer.color = Color.red;
+            mover2D.MaxVelocityX = 10.0f;
+            mover2D.Acceleration = 5.0f;
+        }   
     }
 
     private void ChangeDirection()

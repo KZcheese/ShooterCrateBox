@@ -32,13 +32,6 @@ public class CrateSpawner : MonoBehaviour
     /// </summary>
     private Firearm previousFirearm;
 
-    #region MonoBehaviour Methods
-    private void Start()
-    {
-        SpawnCrate();
-    }
-    #endregion
-
     /// <summary>
     /// Spawns a crate with a random weapon contained. Selects random spawn 
     /// location from an array of all possible spawn locations.

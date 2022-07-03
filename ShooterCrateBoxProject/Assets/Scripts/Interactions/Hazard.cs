@@ -19,7 +19,6 @@ public class Hazard : MonoBehaviour
             // the player does not have a health component there is an issue!
             Health health = other.GetComponent<Health>();
             health.LoseHealth(damage);
-            Debug.Log(string.Format("Player has taken {0} damage!", damage));
         }
     }
     #endregion

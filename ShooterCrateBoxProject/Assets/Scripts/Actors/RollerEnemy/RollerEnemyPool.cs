@@ -44,6 +44,15 @@ public class RollerEnemyPool : MonoBehaviour
         }
     }
 
+    public void ResetPool()
+    {
+        foreach (Transform child in transform)
+        {
+            RollerEnemy rollerEnemy = child.GetComponent<RollerEnemy>();
+            rollerEnemy.OriginPool.Release(child.gameObject);
+        }
+    }
+
     /// <summary>
     /// Instructions for creating a pooled item.
     /// </summary>
@@ -72,7 +81,6 @@ public class RollerEnemyPool : MonoBehaviour
     /// <param name="enemyObject">Projectile to be returned to the pool.</param>
     private void OnReturnedToPool(GameObject enemyObject)
     {
-        enemyObject.transform.SetParent(transform);
         enemyObject.SetActive(false);
     }
 
@@ -82,7 +90,6 @@ public class RollerEnemyPool : MonoBehaviour
     /// <param name="enemyObject">Projectile to be taken from the pool.</param>
     private void OnTakeFromPool(GameObject enemyObject)
     {
-        enemyObject.transform.SetParent(null);
         enemyObject.SetActive(true);
     }
 }

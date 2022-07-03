@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,19 +5,34 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
+    [SerializeField] private CommandStream playerCommandStream;
+    
     public Jumper2D Jumper2D;
     public Mover2D Mover2D;
     public WeaponHandler WeaponHandler;
 
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Queue to hold commands.
+    /// </summary>
+    public CommandStream PlayerCommandStream
     {
-
+        get
+        {
+            return playerCommandStream;
+        }
+        set
+        {
+            playerCommandStream = value;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!System.Object.ReferenceEquals(PlayerCommandStream, null) &&
+                PlayerCommandStream.Count() > 0)
+        {
+            PlayerCommandStream.Dequeue().Execute(this);
+        }
     }
 }

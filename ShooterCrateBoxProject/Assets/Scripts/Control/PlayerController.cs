@@ -10,17 +10,27 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    [SerializeField] private CommandStream playerCommandStream;
+
+    private FireCommand fire = new FireCommand();
+    private JumpCommand jump = new JumpCommand();
+    private MoveCommand move = new MoveCommand();
+    private StopFireCommand stopFire = new StopFireCommand();
+    private StopVariableJumpCommand stopVariableJump = 
+        new StopVariableJumpCommand();
+    private UpdateWeaponHandlerCommand updateWeaponHandler =
+        new UpdateWeaponHandlerCommand();
+
 
     public void OnFireInput(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            player.WeaponHandler.OnFireStart();
+            playerCommandStream.Enqueue(fire);
         }
         else if (context.canceled)
         {
-            player.WeaponHandler.OnFireEnd();
+            playerCommandStream.Enqueue(stopFire);
         }
     }
 
@@ -29,12 +39,12 @@ public class PlayerController : MonoBehaviour
         // True on first frame jump input is pressed.
         if (context.started)
         {
-            player.Jumper2D.Jump();
+            playerCommandStream.Enqueue(jump);
         }
         // True on the first frame the jump input is released.
         else if (context.canceled)
         {
-            player.Jumper2D.StopVariableJump();
+            playerCommandStream.Enqueue(stopVariableJump);
         }
     }
 
@@ -43,11 +53,11 @@ public class PlayerController : MonoBehaviour
         int newDir = Mathf.RoundToInt(context.ReadValue<float>());
         if (newDir != 0)
         {
-            player.WeaponHandler.transform.localScale = 
-                new Vector3(newDir, player.WeaponHandler.transform.localScale.y,
-                player.WeaponHandler.transform.localScale.z);
-            player.WeaponHandler.Direction = newDir;
+            updateWeaponHandler.NewDir = newDir;
+            playerCommandStream.Enqueue(updateWeaponHandler);
         }
-        player.Mover2D.MoveInput = context.ReadValue<float>();
+
+        move.MoveInput = context.ReadValue<float>();
+        playerCommandStream.Enqueue(move);
     }
 }

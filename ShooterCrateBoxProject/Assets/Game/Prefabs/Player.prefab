@@ -773,6 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c48444ccd4617640ac94744c8d3ef90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCommandStream: {fileID: 11400000, guid: 8d3b1d21255fe2b4b9addad252f868ca, type: 2}
   Jumper2D: {fileID: 5387894623823693350}
   Mover2D: {fileID: 5387894623186904132}
   WeaponHandler: {fileID: 5387894623098846725}
@@ -794,7 +795,31 @@ MonoBehaviour:
       m_Calls: []
   OnHealthEmpty:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 58cd063c84f59084b8f433149d4f324e, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5387894625062784622}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &5387894625062784608
 Rigidbody2D:
   serializedVersion: 4

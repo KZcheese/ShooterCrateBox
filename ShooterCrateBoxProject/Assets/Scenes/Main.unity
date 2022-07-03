@@ -657,6 +657,7 @@ GameObject:
   - component: {fileID: 179913086}
   - component: {fileID: 179913087}
   - component: {fileID: 179913088}
+  - component: {fileID: 179913089}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -692,8 +693,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c975c88c92a5749bc0af80e40c7713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCounterCoefficient: 0.5
   rollerEnemyPool: {fileID: 1916194119}
   enemySpawnPoint: {fileID: 638665863}
+  intrawaveWaitTime: {x: 1, y: 3}
+  interwaveWaitTime: {x: 5, y: 7}
+  playerScore: {fileID: 11400000, guid: 9368a8e0ed2827443bc19ec025f87365, type: 2}
 --- !u!114 &179913088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,7 +717,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 179913087}
         m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: SpawnRollerEnemy
+        m_MethodName: OnGameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &179913089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179913084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29673ae9d41d101489bcf9e868a3a095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 58cd063c84f59084b8f433149d4f324e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 179913087}
+        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
+        m_MethodName: OnGameEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7824,7 +7857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RollerEnemyPrefab: {fileID: 5337709860142876017, guid: ec0c7219f5564cf4a82fe41ed7d2403a, type: 3}
   CollectionCheck: 1
-  MaxPoolSize: 10
+  MaxPoolSize: 20
 --- !u!4 &1916194120
 Transform:
   m_ObjectHideFlags: 0
